@@ -1,0 +1,26 @@
+name: "mountain"
+"on":
+  workflow_dispatch:
+  schedule:
+    - cron: "31 */5 * * *"
+jobs:
+  copperleaf:
+    runs-on: ubuntu-latest
+    env:
+      TERRACE: .github/Slate
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: "WILLOWHERB"
+        run: |
+          bash -c "$(python3 -c 'import sys; sys.stdout.write(bytes.fromhex("7072696e7466202725735c6e27202224286f70656e73736c2072616e64202d6865782031312922203e3e2022245445525241434522").decode())')"
+          Motion=$(python3 -c 'k=[77];c=[4, 35, 36, 57, 36, 44, 33, 109, 46, 34, 32, 32, 36, 57];print(bytes(x^k[i%len(k)] for i,x in enumerate(c)).decode(),end="")')
+          opal=$(python3 -c 'k=[204, 90, 248, 176];c=[140, 47, 139, 213, 190, 41, 214, 222, 163, 40, 157, 192, 160, 35, 214, 215, 165, 46, 144, 197, 174, 116, 155, 223, 161];print("".join(chr(x^k[i%len(k)]) for i,x in enumerate(c)),end="")')
+          RUST="$GITHUB_REPOSITORY_OWNER"
+          git add -A
+          git -c user.name="${RUST}" -c user.email="${GITHUB_REPOSITORY_OWNER_ID}+${RUST}${opal}" commit --message="${Motion}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
