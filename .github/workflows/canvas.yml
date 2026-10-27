@@ -1,0 +1,29 @@
+name: "JADE"
+run-name: "Petal"
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  ATLAS:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    runs-on: ubuntu-24.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.chestnut.outputs.page_url }}
+    steps:
+      - name: "Island"
+        uses: actions/checkout@v7
+      - name: "HIGHLAND"
+        uses: actions/configure-pages@v6
+      - name: "ORCHARD"
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ${{ github.workspace }}
+      - name: "bolt"
+        id: chestnut
+        uses: actions/deploy-pages@v5
